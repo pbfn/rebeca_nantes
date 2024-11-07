@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Rebeca Nantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+        }
+        .counter {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+        .time-difference {
+            font-size: 1.5rem;
+            color: #dd1111;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <h1>Você me faz feliz desde o dia 07/07/2024</h1>
+        <p class="time-difference" id="time-difference"></p>
+    </div>
+
+    <script>
+        function updateCounter() {
+            const startDate = Date.UTC(2024, 6, 7, 3); // Data de início em UTC
+            const currentDate = Date.now(); // Timestamp atual em UTC
+
+            // Diferença em milissegundos
+            const differenceInMs = currentDate - startDate;
+
+            // Conversões para dias, horas, minutos e segundos
+            const totalSeconds = Math.floor(differenceInMs / 1000);
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            // Exibir a diferença no formato "X dias, Y horas, Z minutos, W segundos"
+            document.getElementById('time-difference').textContent = 
+                `Estamos juntos ha: ${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+        }
+
+        // Atualizar o contador a cada segundo
+        setInterval(updateCounter, 1000);
+
+        // Chama a função para exibir imediatamente o valor inicial
+        updateCounter();
+    </script>
+</body>
+</html>
